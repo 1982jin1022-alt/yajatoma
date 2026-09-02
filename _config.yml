@@ -1,0 +1,11 @@
+# GitHub Pages(Jekyll) 가 사이트로 내보내지 않을 파일.
+# 저장소에는 남기되 웹에는 노출하지 않는다.
+#
+# 소스 두 개는 build.ps1 이 noindex 메타를 주입하기 전 상태라
+# 그대로 서빙되면 검색 엔진에 색인될 수 있다. 웹에 나가는 것은
+# build.ps1 이 만든 index.html / commission/index.html 뿐이어야 한다.
+exclude:
+  - 설정집_소스.html
+  - 커미션_소스.html
+  - build.ps1
+  - README.md
