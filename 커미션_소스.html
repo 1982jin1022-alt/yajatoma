@@ -1,0 +1,596 @@
+<title>야자 커미션 시트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --ground: #E9EBF0;
+    --surface: #F9FAFC;
+    --surface-2: #F1F3F7;
+    --ink: #191D27;
+    --ink-mid: #4E5566;
+    --ink-soft: #767E91;
+    --rule: #C6CBD7;
+    --rule-soft: #DBDFE8;
+    --stamp: #B62F28;
+    --stamp-wash: rgba(182, 47, 40, 0.09);
+    --zool: #614486;
+    --zool-wash: rgba(97, 68, 134, 0.10);
+
+    --f-sans: "IBM Plex Sans KR", "Malgun Gothic", system-ui, sans-serif;
+    --f-mono: "IBM Plex Mono", "IBM Plex Sans KR", ui-monospace, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #13151B;
+      --surface: #1B1E27;
+      --surface-2: #21252F;
+      --ink: #E5E7EE;
+      --ink-mid: #A8AFC0;
+      --ink-soft: #838B9D;
+      --rule: #333949;
+      --rule-soft: #272C38;
+      --stamp: #E8736A;
+      --stamp-wash: rgba(232, 115, 106, 0.13);
+      --zool: #A98CD4;
+      --zool-wash: rgba(169, 140, 212, 0.13);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #13151B;
+    --surface: #1B1E27;
+    --surface-2: #21252F;
+    --ink: #E5E7EE;
+    --ink-mid: #A8AFC0;
+    --ink-soft: #838B9D;
+    --rule: #333949;
+    --rule-soft: #272C38;
+    --stamp: #E8736A;
+    --stamp-wash: rgba(232, 115, 106, 0.13);
+    --zool: #A98CD4;
+    --zool-wash: rgba(169, 140, 212, 0.13);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--f-sans);
+    font-size: 15px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+  }
+
+  .page {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 24px 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .filecode {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .masthead h1 {
+    margin: 0;
+    font-size: clamp(38px, 9vw, 58px);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    text-wrap: balance;
+  }
+
+  .masthead h1 span { color: var(--stamp); }
+
+  .lede {
+    margin: 0;
+    max-width: 52ch;
+    font-size: 15.5px;
+    color: var(--ink-mid);
+  }
+
+  /* ---------- sections ---------- */
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 9px;
+  }
+
+  .sec-head h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .sec-head .tag {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-left: auto;
+  }
+
+  /* ---------- cast ---------- */
+
+  .cast {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule-soft);
+    border: 1px solid var(--rule-soft);
+  }
+
+  .who {
+    background: var(--surface);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .who-top {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    flex-wrap: wrap;
+  }
+
+  .who-top h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .badge {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 2px;
+    background: var(--stamp-wash);
+    color: var(--stamp);
+  }
+
+  .badge.canon {
+    background: var(--zool-wash);
+    color: var(--zool);
+  }
+
+  .who dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 6px 12px;
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+
+  .who dt {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    padding-top: 3px;
+  }
+
+  .who dd { margin: 0; color: var(--ink-mid); }
+  .who dd b { color: var(--ink); font-weight: 500; }
+
+  /* ---------- sheet ---------- */
+
+  .sheet {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sheet-stage {
+    background: #FFFFFF;
+    border: 1px solid var(--rule);
+    padding: 12px;
+  }
+
+  .sheet-stage img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .plate-cap {
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .plate-cap .credit {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    color: var(--stamp);
+  }
+
+  /* ---------- must list ---------- */
+
+  .must {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--rule-soft);
+    border: 1px solid var(--rule-soft);
+  }
+
+  .must li {
+    background: var(--surface);
+    padding: 13px 17px;
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    gap: 12px;
+    align-items: start;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .must .mark {
+    margin-top: 6px;
+    width: 8px;
+    height: 8px;
+    background: var(--stamp);
+  }
+
+  .must b { font-weight: 600; }
+
+  .must .sub {
+    display: block;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-top: 1px;
+  }
+
+  /* ---------- notes ---------- */
+
+  .notes {
+    background: var(--surface);
+    border-left: 3px solid var(--zool);
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .notes p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--ink-mid);
+  }
+
+  .notes p b { color: var(--ink); font-weight: 500; }
+
+  /* ---------- gallery ---------- */
+
+  .gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .stage {
+    background: #FFFFFF;
+    border: 1px solid var(--rule);
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+
+  .stage img {
+    display: none;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .stage img.on { display: block; }
+
+  .thumbs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(94px, 1fr));
+    gap: 10px;
+  }
+
+  .thumb {
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .thumb img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid var(--rule-soft);
+  }
+
+  .thumb .name {
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  .thumb:hover img { border-color: var(--ink-soft); }
+
+  .thumb:focus-visible img {
+    outline: 2px solid var(--zool);
+    outline-offset: 3px;
+  }
+
+  .thumb[aria-pressed="true"] img {
+    border-color: var(--stamp);
+    box-shadow: 0 0 0 2px var(--stamp);
+  }
+
+  .thumb[aria-pressed="true"] .name { color: var(--stamp); }
+
+  /* ---------- footer ---------- */
+
+  .colophon {
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    line-height: 1.9;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 620px) {
+    .cast { grid-template-columns: 1fr; }
+    .stage { aspect-ratio: 1 / 1; padding: 8px; }
+    .thumbs { grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 8px; }
+    .page { padding: 28px 16px 68px; gap: 38px; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="filecode">커미션 참고 자료 · 야자 × 이누마루 토우마</div>
+    <h1>야자 <span>커미션 시트</span></h1>
+    <p class="lede">아이돌리쉬 세븐 ŹOOL 이누마루 토우마와, 그 상대역 자캐 「야자」의 외관 자료입니다. 아래 정리 시트가 기준이고, 나머지는 참고용입니다.</p>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <h2>등장 인물</h2>
+      <span class="tag">Cast</span>
+    </div>
+    <div class="cast">
+      <div class="who">
+        <div class="who-top">
+          <h3>야자</h3>
+          <span class="badge">자캐</span>
+        </div>
+        <dl>
+          <dt>키</dt><dd><b>162cm</b></dd>
+          <dt>머리</dt><dd>검정에 가까운 짙은 갈색. <b>길이는 자주 바뀌며 현재는 숏컷~단발 사이</b></dd>
+          <dt>눈</dt><dd>머리와 같은 계열의 짙은 색</dd>
+          <dt>안경</dt><dd><b>동그란 안경.</b> 거의 항상 착용</dd>
+          <dt>인상</dt><dd>잘 웃는 강아지상. 오타쿠</dd>
+        </dl>
+      </div>
+      <div class="who">
+        <div class="who-top">
+          <h3>이누마루 토우마</h3>
+          <span class="badge canon">원작 캐릭터</span>
+        </div>
+        <dl>
+          <dt>출처</dt><dd>아이돌리쉬 세븐 / ŹOOL</dd>
+          <dt>키</dt><dd><b>176cm</b></dd>
+          <dt>머리</dt><dd>붉은색</dd>
+          <dt>눈</dt><dd>붉은색. <b>삼백안</b></dd>
+          <dt>특징</dt><dd><b>왼쪽 귀에만 피어싱</b>, 송곳니, 날카로운 인상</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>외관 정리</h2>
+      <span class="tag">Sheet</span>
+    </div>
+    <figure class="sheet">
+      <div class="sheet-stage">
+        <img src="{{IMG:ref-nanagom}}" alt="야자와 이누마루 토우마의 외관 정리 시트. 두 인물의 머리색과 눈색 견본, 표정 예시, 전신 SD 일러스트, 특징 메모가 정리되어 있다.">
+      </div>
+      <figcaption class="plate-cap"><span class="credit">나나곰 @NUEH_NANA</span></figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>꼭 지켜주세요</h2>
+      <span class="tag">Must</span>
+    </div>
+    <ul class="must">
+      <li>
+        <span class="mark"></span>
+        <span><b>야자의 안경은 동그란 형태입니다.</b>
+          <span class="sub">벗은 모습이 필요한 경우가 아니면 항상 씌워주세요.</span>
+        </span>
+      </li>
+      <li>
+        <span class="mark"></span>
+        <span><b>토우마의 피어싱은 왼쪽 귀에만 있습니다.</b>
+          <span class="sub">양쪽이 아닙니다.</span>
+        </span>
+      </li>
+      <li>
+        <span class="mark"></span>
+        <span><b>토우마는 삼백안에 송곳니가 보이는 인상입니다.</b>
+          <span class="sub">원작 캐릭터이므로 공식 디자인을 우선해주세요.</span>
+        </span>
+      </li>
+      <li>
+        <span class="mark"></span>
+        <span><b>야자의 머리 길이는 자유롭게 해주셔도 됩니다.</b>
+          <span class="sub">숏컷에서 단발 사이라면 어느 쪽이든 괜찮습니다. 색은 시트의 견본을 따라주세요.</span>
+        </span>
+      </li>
+      <li>
+        <span class="mark"></span>
+        <span><b>색상은 시트의 견본을 기준으로 해주세요.</b>
+          <span class="sub">아래 참고 그림들은 작가님마다 해석이 조금씩 다릅니다.</span>
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>복장 · 분위기</h2>
+      <span class="tag">Styling</span>
+    </div>
+    <div class="notes">
+      <p><b>야자</b> — 오버사이즈 검정 후드(집업 또는 후드티)에 검정 반바지, 흰 양말 조합으로 가장 많이 그려졌습니다. 전체적으로 어두운 톤에 헐렁한 실루엣입니다. 다른 복장도 괜찮습니다.</p>
+      <p><b>토우마</b> — 스터드가 박힌 초커와 어두운 재킷, 붉은 계열 팬츠에 체인. 원작 사복 디자인을 따르면 됩니다.</p>
+      <p><b>둘 사이</b> — 소꿉친구이고, 야자가 토우마의 팬입니다. <b>다가가고 매달리는 쪽이 야자</b>, 당황하면서도 싫어하지는 않는 쪽이 토우마입니다. 서로 호감이 있는데 <b>둘 다 눈치가 느려서 끝까지 모르는</b> 관계라, 알콩달콩한 연인보다는 거리감 없는 친구 쪽에 가깝게 봐주시면 좋습니다.</p>
+      <p><b>키 차이는 14cm</b>입니다. 나란히 서면 야자의 머리가 토우마의 턱 근처에 옵니다.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>지금까지의 그림</h2>
+      <span class="tag">Past Work</span>
+    </div>
+
+    <div class="gallery">
+      <div class="stage">
+        <img class="on" data-id="nugunga" src="{{IMG:c-nugunga}}" alt="나란히 선 토우마와 야자의 전신 컬러 일러스트.">
+        <img loading="lazy" data-id="jaje" src="{{IMG:c-jaje}}" alt="야자가 토우마의 팔짱을 끼고 웃고 있는 컬러 일러스트.">
+        <img loading="lazy" data-id="champang" src="{{IMG:c-champang}}" alt="야자가 토우마의 어깨에 팔을 두르고 있는 컬러 일러스트.">
+        <img loading="lazy" data-id="ppudu" src="{{IMG:c-ppudu}}" alt="야자와 토우마가 얼굴을 맞대고 있는 클로즈업.">
+        <img loading="lazy" data-id="sikgo" src="{{IMG:c-sikgo}}" alt="야자가 토우마의 얼굴을 붙잡고 마주 보고 있는 스케치.">
+        <img loading="lazy" data-id="hakumu" src="{{IMG:c-hakumu}}" alt="야자와 토우마의 표정과 포즈를 모은 러프 스케치 모음.">
+        <img loading="lazy" data-id="baesinja" src="{{IMG:c-baesinja}}" alt="토우마가 뒤에서 야자를 껴안고 있는 스케치.">
+      </div>
+
+      <div class="plate-cap"><span class="credit" id="plate-credit">CREPE · 누군가님</span></div>
+
+      <div class="thumbs">
+        <button type="button" class="thumb" data-id="nugunga" aria-pressed="true" data-credit="CREPE · 누군가님">
+          <img loading="lazy" src="{{THUMB:c-nugunga}}" alt="">
+          <span class="name">누군가님</span>
+        </button>
+        <button type="button" class="thumb" data-id="jaje" aria-pressed="false" data-credit="자제님">
+          <img loading="lazy" src="{{THUMB:c-jaje}}" alt="">
+          <span class="name">자제님</span>
+        </button>
+        <button type="button" class="thumb" data-id="champang" aria-pressed="false" data-credit="CREPE · 챰팡님">
+          <img loading="lazy" src="{{THUMB:c-champang}}" alt="">
+          <span class="name">챰팡님</span>
+        </button>
+        <button type="button" class="thumb" data-id="ppudu" aria-pressed="false" data-credit="CREPE · 뿌두님">
+          <img loading="lazy" src="{{THUMB:c-ppudu}}" alt="">
+          <span class="name">뿌두님</span>
+        </button>
+        <button type="button" class="thumb" data-id="sikgo" aria-pressed="false" data-credit="CREPE · 식고님">
+          <img loading="lazy" src="{{THUMB:c-sikgo}}" alt="">
+          <span class="name">식고님</span>
+        </button>
+        <button type="button" class="thumb" data-id="hakumu" aria-pressed="false" data-credit="CREPE · HakUMu님">
+          <img loading="lazy" src="{{THUMB:c-hakumu}}" alt="">
+          <span class="name">HakUMu님</span>
+        </button>
+        <button type="button" class="thumb" data-id="baesinja" aria-pressed="false" data-credit="CREPE · 배신자님">
+          <img loading="lazy" src="{{THUMB:c-baesinja}}" alt="">
+          <span class="name">배신자님</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="colophon">
+    이 페이지의 그림은 모두 커미션으로 받은 것이며, 저작권은 각 작가님께 있습니다.<br>
+    구도나 표현의 참고용으로만 봐주시고, 그대로 따라 그리지는 말아주세요.
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var plates = [].slice.call(document.querySelectorAll('.stage img'));
+    var thumbs = [].slice.call(document.querySelectorAll('.thumb'));
+    var credit = document.getElementById('plate-credit');
+
+    function show(id) {
+      plates.forEach(function (img) { img.classList.toggle('on', img.dataset.id === id); });
+      thumbs.forEach(function (btn) {
+        var on = btn.dataset.id === id;
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        if (on) { credit.textContent = btn.dataset.credit; }
+      });
+    }
+
+    thumbs.forEach(function (btn) {
+      btn.addEventListener('click', function () { show(btn.dataset.id); });
+    });
+
+    show('nugunga');
+  })();
+</script>
